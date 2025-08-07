@@ -94,7 +94,6 @@ public class MenuController {
 		
 		menuMapper.updateMenu(menuDTO); //Update 실행 
 		
-		
 		return "redirect:/Menus/List"; 
 	}
 	

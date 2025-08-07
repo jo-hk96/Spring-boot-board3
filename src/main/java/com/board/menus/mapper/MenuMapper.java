@@ -17,10 +17,8 @@ public interface MenuMapper {
 	//MenuDTO UpdateFormId(String menu_id);
 	
 	void updateMenu(MenuDTO menuDTO);//void
-	
-	
+		
 	MenuDTO getMenu(MenuDTO menuDTO);
-	
 	
 	void insertMenu2(MenuDTO menuDTO);
 	
