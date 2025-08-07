@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.board.menus.mapper.MenuMapper">
+ <select id = "getMenuList" resultType="com.board.menus.domain.MenuDTO">
+ 	SELECT MENU_ID, MENU_NAME, MENU_SEQ
+ 	FROM MENUS
+ 	ORDER BY MENU_SEQ ASC
+ </select>
+ 
+<insert id = "insertMenu">
+	Insert into menus
+	(MENU_ID,MENU_NAME,MENU_SEQ)
+	values(#{menu_id},#{menu_name},#{menu_seq})
+</insert>
+
+<insert id = "insertMenu2">
+	insert into menus
+	(MENU_ID,MENU_NAME,MENU_SEQ)
+	VALUES((SELECT 'MENU' || TRIM(TO_CHAR(NVL(SUBSTR(MAX(MENU_ID),5,2),0)+1 , '00'))FROM MENUS),#{menu_name},(SELECT NVL(MAX(MENU_SEQ),0) + 1 FROM MENUS))
+</insert>
+
+<delete id = "delete">
+	delete from menus
+	where menu_id = (#{menu_id})
+</delete>
+
+<!--DTO 형식으로 목록가져오기  -->
+<select id = "getMenu" resultType = "com.board.menus.domain.MenuDTO">
+	SELECT MENU_ID , MENU_NAME , MENU_SEQ
+	FROM MENUS
+	Where MENU_ID = #{menu_id} 
+</select>
+
+
+<!--메뉴수정  -->
+<update id = "updateMenu">
+	UPDATE MENUS
+	set   menu_name = #{menu_name},
+		  menu_seq = #{menu_seq}
+	where menu_id = #{menu_id}
+</update>
+</mapper>
