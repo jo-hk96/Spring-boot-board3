@@ -48,10 +48,11 @@ public class TuserController {
 	@RequestMapping("/Tuser/TuserUpdate")
 	public String userUpdate(TuserDTO tuserDTO, Model model) {
 		
-		//id기준 한명의 회원정보 다 조회
+		//id기준 한명의 회원정보 다 조회 user에 정보를 담아서 tuserUpdate파일에 들고감
+		//${user.userid}등으로 화면에 출력가능
 		TuserDTO user = tuserMapper.getUser(tuserDTO);
 		model.addAttribute("user",user);	
-		return "tuser/tuserUpdate"; //파일찾기
+		return "tuser/tuserUpdate"; //파일찾기 
 		
 	}
 	@RequestMapping("/Tuser/update") //url 경로

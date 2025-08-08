@@ -1,13 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%-- <%
-
-
-String menu_id = request.getParameter("menu_id"); //<%= menu_id_1
-String menu_name = request.getParameter("menu_name"); //<%= menu_id_1
-String menu_seq = request.getParameter("menu_seq"); //<%= menu_id_1
-//request.setAttribute("menu_id_1" , menu_id); //EL문법 : ${menu_id_1}
-
-%> --%>
 
 
 <!DOCTYPE html>

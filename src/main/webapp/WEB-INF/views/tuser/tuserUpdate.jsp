@@ -21,7 +21,6 @@
 	input {width:100%;}
 	input[type=submit]{width:100px;}
 </Style>
-
 </head>
 <body>
 	<main>
@@ -34,7 +33,7 @@
 				</tr>
 				<tr>
 					<td>비밀번호:</td>
-					<td><input type = "text" name ="passwd" placeholder = "비밀번호" value="${user.passwd}"//></td>
+					<td><input type = "text" name ="passwd" placeholder = "비밀번호" value="${user.passwd}"/></td>
 				</tr>
 				<tr>
 					<td>유저이름</td>
@@ -42,7 +41,7 @@
 				</tr>
 				<tr>
 					<td>유저포인트</td>
-					<td><input type = "text" name ="upoint"  value="${user.upoint}" readonly/></td>
+					<td><input type = "text" name ="upoint"  value="${user.upoint}" title= "유저포인트는 변경하실수없습니다" readonly/></td>
 				</tr>
 				<tr>
 					<td>이메일</td>
@@ -54,3 +53,11 @@
 			</table>
 		</form>
 	</main>
+	
+	
+	
+	
+</body>
+
+
+</html>

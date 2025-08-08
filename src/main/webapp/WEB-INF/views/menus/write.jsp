@@ -46,6 +46,7 @@
 			</table>
 		</form>
 	</main>
+	
 <script>
 	//const formEl = document.querySelectorAll("form")[0]; 1 번째 폼
 	const formEl = document.querySelector("form");//form태그 찾기
@@ -72,7 +73,7 @@
 				alert('메뉴번호가 입력되지 않았습니다.')
 				e.stopPropagation();
 				e.preventDefault();				
-				return false;	
+				return false;
 			}
 		})
 </script>	
