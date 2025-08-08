@@ -18,5 +18,20 @@
 </delete>
 
 
+<select id = "getUser" resultType = "com.board.tuser.domain.TuserDTO">
+	SELECT userid,passwd,username,email,upoint,indate
+	FROM tuser
+	Where userid = #{userid} 
+</select>
+
+
+<update id = "userUpdate">
+	UPDATE tuser
+	set   passwd = #{passwd},
+		  username = #{username},
+		  email = #{email},
+		  upoint = #{upoint}
+	where userid = #{userid}
+</update>
 
 </mapper>

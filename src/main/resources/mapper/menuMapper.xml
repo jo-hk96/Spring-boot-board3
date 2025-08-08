@@ -19,6 +19,8 @@
 	VALUES((SELECT 'MENU' || TRIM(TO_CHAR(NVL(SUBSTR(MAX(MENU_ID),5,2),0)+1 , '00'))FROM MENUS),#{menu_name},(SELECT NVL(MAX(MENU_SEQ),0) + 1 FROM MENUS))
 </insert>
 
+
+
 <delete id = "delete">
 	delete from menus
 	where menu_id = (#{menu_id})

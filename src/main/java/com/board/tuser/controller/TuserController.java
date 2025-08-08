@@ -36,12 +36,29 @@ public class TuserController {
 		tuserMapper.insertUser(tuserDTO);
 		return "redirect:/Tuser/Ulist";
 	}
-	@RequestMapping("/Tuser/userdelete")
+	@RequestMapping("/Tuser/userDelete")
 	public String userDelete(@RequestParam("userid") String userid) {
 			
-		tuserMapper.deleteUser(userid);
+		tuserMapper.userdelete(userid);
+		
+		
 		return "redirect:/Tuser/Ulist";
 		}
 	
-	
+	@RequestMapping("/Tuser/TuserUpdate")
+	public String userUpdate(TuserDTO tuserDTO, Model model) {
+		
+		//id기준 한명의 회원정보 다 조회
+		TuserDTO user = tuserMapper.getUser(tuserDTO);
+		model.addAttribute("user",user);	
+		return "tuser/tuserUpdate"; //파일찾기
+		
+	}
+	@RequestMapping("/Tuser/update") //url 경로
+	public String Update(TuserDTO tuserDTO) {
+		
+		tuserMapper.userUpdate(tuserDTO);
+		
+		return "redirect:/Tuser/Ulist"; //url경로
+	}
 }

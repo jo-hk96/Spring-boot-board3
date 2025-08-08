@@ -25,31 +25,31 @@
 </head>
 <body>
 	<main>
-		<h2>회원가입</h2>
-		<form action ="/Tuser/TuserWrite" method="POST">
+		<h2>회원수정</h2>
+		<form action ="/Tuser/update" method="POST">
 			<table>
 				<tr>
 					<td>아이디:</td>
-					<td><input type = "text" name ="userid" placeholder = "아이디 최대 10글자" Maxlength = "10"/></td>
+					<td><input type = "text" name ="userid" placeholder = "아이디수정" Maxlength = "10" value="${user.userid}"/></td>
 				</tr>
 				<tr>
 					<td>비밀번호:</td>
-					<td><input type = "password" name ="passwd" placeholder = "비밀번호"/></td>
+					<td><input type = "text" name ="passwd" placeholder = "비밀번호" value="${user.passwd}"//></td>
 				</tr>
 				<tr>
 					<td>유저이름</td>
-					<td><input type = "text" name ="username" placeholder = "이름"/></td>
+					<td><input type = "text" name ="username" placeholder = "이름" value="${user.passwd}"/></td>
 				</tr>
 				<tr>
 					<td>유저포인트</td>
-					<td><input type = "text" name ="upoint" placeholder = "갖고싶은만큼.."/></td>
+					<td><input type = "text" name ="upoint"  value="${user.upoint}" readonly/></td>
 				</tr>
 				<tr>
 					<td>이메일</td>
-					<td><input type = "text" name ="email" placeholder = "이메일 "/></td>
+					<td><input type = "text" name ="email" placeholder = "이메일" value="${user.email}"/></td>
 				</tr>
 				<tr>
-					<td colspan = "2"><input type = "submit" value = "회원가입"/></td>
+					<td colspan = "2"><input type = "submit" value = "회원수정" /></td>
 				</tr>
 			</table>
 		</form>

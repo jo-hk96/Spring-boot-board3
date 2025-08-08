@@ -12,7 +12,6 @@
 <body>
 <main>
    <h2>home</h2>
-   <a href ="/test">test</a>
    <hr>
    <a href ="/Menus/List">메뉴 목록</a><br>
    <a href ="/Menus/WriteForm">새 메뉴 추가</a><br>
@@ -20,8 +19,6 @@
    <hr>
    <a href ="/Tuser/Ulist">회원리스트</a><br>
    <a href ="/Tuser/NewTuser">회원가입</a><br>
-   <a href ="/Tuser/TuserDelete">회원삭제</a><br>
-   <a href ="/Tuser/TuserUpdate">회원수정</a>
 </main>   
 </body>
 </html>
