@@ -27,6 +27,7 @@
 	<body>
 		<main>
 			<h2>회원가입</h2>
+			<a href ="/">home</a>
 			<form action ="/Tuser/TuserWrite" method="POST">
 				<table>
 					<tr>
@@ -87,17 +88,14 @@
 							e.preventDefault();
 							inputEl2.focus();
 							return false;
-						}else if(!regex.test(inputEl2)){
-							alert('영대소문 8~20자,특수문자를 포함하여 입력해주세요.')
+						}else if(!regex.test(inputEl2.trim())){
+							alert('1개이상의 영대소문 8~20자,특수문자를 포함하여 입력해주세요.')
 							e.stopPropagation();
 							e.preventDefault();
 							inputEl2.focus();
 							return false;
 						}
-						
-						
-						
-						
+	
 					const passwd = document.querySelector("#passwd");//id값
 					const passwd2 = document.querySelector("#passwd2");
 						if(passwd.value !== passwd2.value){
@@ -107,11 +105,7 @@
 							passwd2.focus();
 							return false;
 						}
-					
-							
-					
-						
-						
+
 					const inputEl5 =document.querySelector('[name ="email"]');
 					const regEmail = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
 					if(inputEl5.value.trim() == ''){
