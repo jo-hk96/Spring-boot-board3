@@ -69,16 +69,6 @@
 					inputEl1.focus();
 					return false;
 				}
-				
-					const inputEl4 =document.querySelector('[name ="username"]');
-					if(inputEl4.value.trim() == ''){
-						alert('이름이 입력되지 않았습니다.')
-						e.stopPropagation();
-						e.preventDefault();
-						inputEl4.focus();
-						return false;
-					}
-
 
 					const inputEl2 =document.querySelector("#passwd");
 					const regex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&#.~_-])[A-Za-z\d@$!%*?&#.~_-]{8,20}$/;
@@ -88,39 +78,56 @@
 							e.preventDefault();
 							inputEl2.focus();
 							return false;
-						}else if(!regex.test(inputEl2.trim())){
+						}else if(!regex.test(inputEl2.value.trim())){
 							alert('1개이상의 영대소문 8~20자,특수문자를 포함하여 입력해주세요.')
 							e.stopPropagation();
 							e.preventDefault();
 							inputEl2.focus();
 							return false;
 						}
-	
+
 					const passwd = document.querySelector("#passwd");//id값
 					const passwd2 = document.querySelector("#passwd2");
-						if(passwd.value !== passwd2.value){
+						if(passwd.value != passwd2.value){
 							alert("비밀번호가 일치하지 않습니다.")
 							e.stopPropagation();
 							e.preventDefault();
 							passwd2.focus();
 							return false;
 						}
+						
+						const inputEl4 =document.querySelector('[name ="username"]');
+						if(inputEl4.value.trim() == ''){
+							alert('이름이 입력되지 않았습니다.')
+							e.stopPropagation();
+							e.preventDefault();
+							inputEl4.focus();
+							return false;
+						}
 
-					const inputEl5 =document.querySelector('[name ="email"]');
 					const regEmail = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
+					const inputEl5 =document.querySelector('[name ="email"]');
 					if(inputEl5.value.trim() == ''){
 						alert('이메일이 입력되지 않았습니다.')
 						e.stopPropagation();
 						e.preventDefault();
 						inputEl5.focus();
-						
-					} else if(!regEmail.test(inputEl5.value)){
+						return false;
+					}else{
+						if (!inputEl5.value.includes('@')) {
+				            alert('@를 포함하여 이메일 주소를 입력해주세요.');
+				            e.stopPropagation();
+				            e.preventDefault();
+				            inputEl5.focus();
+				            return false;
+					} else if(!regEmail.test(inputEl5.value.trim())){
 						alert('영어대소문자 상관없이, 특수문자는 하나만 포함가능합니다.')
 						e.stopPropagation();
 						e.preventDefault();
 						inputEl5.focus();
 						return false;
 					} 
+				}
 			})
 		</Script>
 	</body>

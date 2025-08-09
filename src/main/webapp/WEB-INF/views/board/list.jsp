@@ -38,26 +38,24 @@
 				<td>내용</td>
 				<td>글쓴이</td>
 				<td>게시글 등록 날짜</td>
+				<td>조회수</td>
 			</tr>
 			<tr>
-				<td colspan = "5">
-					<a href ="/Menus/WriteForm">새 메뉴 추가</a><Br>
+				<td colspan = "6">
 					<a href = "/">home</a>
 				</td>	
 			</tr>
-			<c:forEach var = "menu" items = "${menuList}">
+			<c:forEach var = "blist" items = "${boardlist}"> 
 				<tr>
-					<td>${menu.menu_id}</td>
-					<td>${menu.menu_name}</td>
-					<td>${menu.menu_seq}</td>
-					<!--onclick="return confirm('정말 삭제하시겠습니까?')
-					onclick 속성 사용시 링크 클릭했을때 js 함수 사용가능
-					confirm() 사용자에게 확인(ok) 또는 취소(Cancle)버튼이 있는 대화상자를 보여주고
-					확인 취소에따라 true false값을 반환
-					return이 없다면 취소눌러도 페이지로 이동함
-					 -->
-					<td><a href ="/Menus/Delete?menu_id=${menu.menu_id}" onclick="return confirm('정말 삭제하시겠습니까?')">삭제</a></td>
-					<td><a href ="/Menus/UpdateForm?menu_id=${menu.menu_id}">수정</a></td>
+					<td>${blist.idx}</td>
+					<td>${blist.menu_id}</td>
+					<td>${blist.title}</td>
+					<td>${blist.content}</td>
+					<td>${blist.writer}</td>
+					<td>${blist.regdate}</td>
+					<td>${blist.hit}</td>
+					<td><a href ="/Menus/Delete?menu_id=" onclick="return confirm('정말 삭제하시겠습니까?')">삭제</a></td>
+					<td><a href ="/Menus/UpdateForm?menu_id=">수정</a></td>
 				</tr>
 			</c:forEach>
 		</table>

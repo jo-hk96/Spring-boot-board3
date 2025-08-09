@@ -8,9 +8,5 @@ import com.board.domain.BoardDTO;
 
 @Mapper
 public interface BoardMapper {
-	
-	
 List<BoardDTO> getBoardList();
-	
-	
 }

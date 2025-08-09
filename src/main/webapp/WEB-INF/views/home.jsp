@@ -19,6 +19,9 @@
    <hr>
    <a href ="/Tuser/Ulist">회원리스트</a><br>
    <a href ="/Tuser/NewTuser">회원가입</a><br>
+   <hr>
+   <a href = "/Board/Blist">게시글 목록</a>
+   
 </main>   
 </body>
 </html>

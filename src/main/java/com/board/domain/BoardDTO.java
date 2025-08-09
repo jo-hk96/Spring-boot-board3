@@ -6,7 +6,7 @@ public class BoardDTO {
 	private String title;
 	private String content;
 	private String writer;
-	private int regdate;
+	private String regdate;
 	private int hit;
 	
 	public int getIdx() {
@@ -39,10 +39,10 @@ public class BoardDTO {
 	public void setWriter(String writer) {
 		this.writer = writer;
 	}
-	public int getRegdate() {
+	public String getRegdate() {
 		return regdate;
 	}
-	public void setRegdate(int regdate) {
+	public void setRegdate(String regdate) {
 		this.regdate = regdate;
 	}
 	public int getHit() {
@@ -59,8 +59,7 @@ public class BoardDTO {
 	}
 	
 	
-	public BoardDTO(int idx, String menu_id, String title, String content, String writer, int regdate, int hit) {
-		super();
+	public BoardDTO(int idx, String menu_id, String title, String content, String writer, String regdate, int hit) {
 		this.idx = idx;
 		this.menu_id = menu_id;
 		this.title = title;

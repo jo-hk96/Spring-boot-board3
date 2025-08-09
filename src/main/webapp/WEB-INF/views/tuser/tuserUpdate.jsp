@@ -93,11 +93,7 @@
 							return false;
 
 						}
-	
-							
-						
-						
-						
+
 						const passwd2 = document.querySelector("#passwd2");
 							if(passwd.value != passwd2.value){
 								alert("비밀번호가 일치하지 않습니다.")
@@ -122,9 +118,7 @@
 							inputEl2.focus();
 							return false;
 						}
-	
-				
-						
+
 						
 						const inputEl4 =document.querySelector('[name ="username"]');
 						if(inputEl4.value.trim() == ''){

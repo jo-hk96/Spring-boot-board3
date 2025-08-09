@@ -3,7 +3,9 @@
 <mapper namespace="com.board.mapper.BoardMapper">
 
 <select id = "getBoardList" resultType = "com.board.domain.BoardDTO">
-	
+	select idx,menu_id,title,content,writer,regdate,hit
+	from board
+	order by idx asc
 
 </select>
 
