@@ -39,10 +39,12 @@
 				<td>글쓴이</td>
 				<td>게시글 등록 날짜</td>
 				<td>조회수</td>
+				<td>삭제</td>
+				<td>수정</td>
 			</tr>
 			<tr>
-				<td colspan = "6">
-					<a href = "/">home</a>
+				<td colspan = "9">
+					<a href = "/">메뉴로돌아가기</a>
 				</td>	
 			</tr>
 			<c:forEach var = "blist" items = "${boardlist}"> 
@@ -54,8 +56,8 @@
 					<td>${blist.writer}</td>
 					<td>${blist.regdate}</td>
 					<td>${blist.hit}</td>
-					<td><a href ="/Menus/Delete?menu_id=" onclick="return confirm('정말 삭제하시겠습니까?')">삭제</a></td>
-					<td><a href ="/Menus/UpdateForm?menu_id=">수정</a></td>
+					<td><a href ="/Board/Delete?idx=${blist.idx}" onclick="return confirm('정말 삭제하시겠습니까?')">게시글 삭제</a></td>
+					<td><a href ="/Board/UpdateForm?idx=${blist.idx}">게시글 수정</a></td>
 				</tr>
 			</c:forEach>
 		</table>

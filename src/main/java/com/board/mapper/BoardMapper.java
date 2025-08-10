@@ -8,5 +8,14 @@ import com.board.domain.BoardDTO;
 
 @Mapper
 public interface BoardMapper {
-List<BoardDTO> getBoardList();
+	List<BoardDTO> getBoardList();
+	
+	
+	void Bdelete (int idx);
+		
+	
+
+
+
+
 }

@@ -1,20 +1,14 @@
-create table board(
-BNO number(8) primary key,
-TITLE VARCHAR2(240) not null,
-content varchar2(4000),
-writer varchar2(12),
-regdate date default sysdate,
-hit number(9) default 0
-);
 
 
-create sequence seq_BNO;
+CREATE  TABLE MENUS (
+    MENU_ID     VARCHAR2(6)   PRIMARY KEY   -- 매뉴아이디
+  , MENU_NAME   VARCHAR2(30)     -- 메뉴이름
+  , MENU_SEQ    NUMBER(6)        -- 순번
+)
 
-insert into board (bno ,title ,content ,writer) values(seq_BNO.nextval,'새글','방가','아이유');
+INSERT  INTO   MENUS  VALUES ( 'MENU01', 'HTML',       1);
+INSERT  INTO   MENUS  VALUES ( 'MENU02', 'CSS',         2);
+INSERT  INTO   MENUS  VALUES ( 'MENU03', 'JAVASCRIPT',  3);
+COMMIT
 
-insert into board (bno ,title ,content ,writer) values(seq_BNO.nextval,'두번째글','잘부탁','레이');
-
-commit;
-
-
-select * from board;
+SELECT * FROM MENUS;

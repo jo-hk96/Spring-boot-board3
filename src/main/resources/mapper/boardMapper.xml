@@ -6,8 +6,19 @@
 	select idx,menu_id,title,content,writer,regdate,hit
 	from board
 	order by idx asc
-
 </select>
+
+<delete id = "Bdelete">
+	delete from board where idx = #{idx}
+</delete>
+
+<insert id = "Boardinsert">
+	
+	
+	
+	
+</insert>
+
 
 
 </mapper>

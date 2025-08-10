@@ -23,7 +23,7 @@
 
 <delete id = "delete">
 	delete from menus
-	where menu_id = (#{menu_id})
+	where menu_id = #{menu_id}
 </delete>
 
 <!--DTO 형식으로 목록가져오기  -->
