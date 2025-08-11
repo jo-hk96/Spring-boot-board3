@@ -3,20 +3,20 @@
 <mapper namespace="com.board.mapper.BoardMapper">
 
 <select id = "getBoardList" resultType = "com.board.domain.BoardDTO">
-	select idx,menu_id,title,content,writer,regdate,hit
+	select idx,menu_id,title,writer,regdate,hit
 	from board
 	order by idx asc
 </select>
 
-<delete id = "Bdelete">
-	delete from board where idx = #{idx}
-</delete>
-
-<insert id = "Boardinsert">
+<insert id = "insertBoard" >
+	insert into board(idx,menu_id,title,content,writer,regdate,hit)
+	values(
 	
+	(select nvl(max(idx),0)+1 from board),
 	
+	#{menu_id},#{title},#{content},#{writer},sysdate,0
 	
-	
+	)
 </insert>
 
 

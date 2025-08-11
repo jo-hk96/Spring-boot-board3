@@ -24,6 +24,12 @@
 	Where userid = #{userid} 
 </select>
 
+<select id = "getUser2" resultType = "com.board.tuser.domain.TuserDTO">
+	SELECT userid,passwd,username,email,upoint,indate
+	FROM tuser
+	Where userid = #{userid} 
+</select>
+
 
 <update id = "userUpdate">
 	UPDATE tuser

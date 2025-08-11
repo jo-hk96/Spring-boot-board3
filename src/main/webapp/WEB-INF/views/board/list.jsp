@@ -11,7 +11,7 @@
 <link rel ="stylesheet" href ="/css/common.css"/>
 
 <style>
-	td{text-align :center;}
+	td ,h2 {text-align :center;}
 	tr:first-child{
 		background-color:#333333;
 		color :white;
@@ -29,35 +29,41 @@
 </head>
 <body>
 	<main>
-		<h2>게시글 목록</h2>
+	<!-- 메뉴목록 -->
+	<%@include file = "/WEB-INF/include/menus.jsp" %>
+		<h2>${menuDTO.menu_name} 게시글 목록</h2>
 		<table>
 			<tr>
 				<td>번호</td>
-				<td>아이디</td>
 				<td>제목</td>
-				<td>내용</td>
 				<td>글쓴이</td>
 				<td>게시글 등록 날짜</td>
 				<td>조회수</td>
-				<td>삭제</td>
-				<td>수정</td>
 			</tr>
+			
+			
 			<tr>
-				<td colspan = "9">
+			    <td colspan="5">
+			      <a href="/Board/WriteForm?menu_id=${menuDTO.menu_id}">새 게시물 추가</a>	 
+			    </td>
+		   </tr>
+	
+			<tr>
+				<td colspan = "5">
 					<a href = "/">메뉴로돌아가기</a>
 				</td>	
 			</tr>
 			<c:forEach var = "blist" items = "${boardlist}"> 
 				<tr>
 					<td>${blist.idx}</td>
-					<td>${blist.menu_id}</td>
-					<td>${blist.title}</td>
-					<td>${blist.content}</td>
+					<td>
+						<a href = "/Board/View?idx=${board.idx }">
+							${blist.title}
+						</a>
+					</td>
 					<td>${blist.writer}</td>
 					<td>${blist.regdate}</td>
 					<td>${blist.hit}</td>
-					<td><a href ="/Board/Delete?idx=${blist.idx}" onclick="return confirm('정말 삭제하시겠습니까?')">게시글 삭제</a></td>
-					<td><a href ="/Board/UpdateForm?idx=${blist.idx}">게시글 수정</a></td>
 				</tr>
 			</c:forEach>
 		</table>

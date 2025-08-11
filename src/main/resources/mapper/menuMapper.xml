@@ -7,6 +7,8 @@
  	ORDER BY MENU_SEQ ASC
  </select>
  
+ 
+ <!-- 메뉴추가 -->
 <insert id = "insertMenu">
 	Insert into menus
 	(MENU_ID,MENU_NAME,MENU_SEQ)

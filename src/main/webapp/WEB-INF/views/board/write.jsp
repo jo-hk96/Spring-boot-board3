@@ -27,31 +27,26 @@
 
 	<body>
 		<main>
-			<h2>게시글 작성</h2>
+		
+			<!-- 메뉴리스트 -->
+			<%@include file="/WEB-INF/include/menus.jsp" %>
+			
+			<h2>${menuDTO.menu_name}게시글 작성하기</h2>
 			<a href ="/">메뉴로 돌아가기</a>
-			<form action ="/Tuser/TuserWrite" method="POST">
+			<form action ="/Board/Write" method="POST">
+				<input type ="hidden" name = "menu_id" value="${menuDTO.menu_id}"/>
 				<table>
 					<tr>
-						<td>메뉴선택:</td>
-							<td><select name = "menu_id" id="menu_id">
-								<option value = "">메뉴를 선택해주세요</option>
-									<c:forEach var = "menu" items ="${menu}">
-										<option value = "${menu.menu_id}">${menu.menu_name}</option>
-									</c:forEach>
-								</select>
-							</td>
+						<td>제목:</td>
+						<td><input type = "text" name ="title"/></td>
 					</tr>
 					<tr>
-						<td>제목:</td>
-						<td><input type = "text" name ="title" maxlength = "20"/></td>
+						<td>작성자 이름:</td>
+						<td><input type = "text" name ="writer"/></td>
 					</tr>
 					<tr>
 						<td>내용:</td>
-						<td><textarea style="text-align: left" rows ="5" cols = "30" name = "content" id ="content"></textarea></td>
-					</tr>
-					<tr>	
-						<td>유저이름</td>
-						<td><input type = "text" name ="username" placeholder = "이름"/></td>
+						<td><textarea name = "content" ></textarea></td>
 					</tr>
 					<tr>
 						<td colspan = "2"><input type = "submit" value = "게시글 등록 하기"/></td>

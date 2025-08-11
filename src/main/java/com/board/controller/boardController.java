@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.board.domain.BoardDTO;
 import com.board.mapper.BoardMapper;
@@ -22,32 +23,56 @@ public class boardController {
 	@Autowired
 	private MenuMapper menuMapper;
 	
-	//게시글목록
-	@RequestMapping("/Board/Blist")
-		public String list(Model model) {
-		List<BoardDTO> boardlist = boardMapper.getBoardList();
+	
+	//게시판 메뉴 목록
+	@RequestMapping("Board/Blist")
+	public ModelAndView list(MenuDTO menuDTO){
+		//메뉴 리스트
+		List<MenuDTO> menulist = menuMapper.getMenuList();
 		
-		model.addAttribute("boardlist" , boardlist);
-			return "/board/list";
+		
+		//게시글 목록처리
+		List<BoardDTO> boardlist = boardMapper.getBoardList(menuDTO);
+		
+		menuDTO = menuMapper.getMenu(menuDTO);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("menulist", menulist);
+		mv.addObject("menuDTO", menuDTO);
+		mv.addObject("boardlist", boardlist);
+		mv.setViewName("board/list");
+		return mv;
+		
 	}
 	
-	//게시글삭제
-	@RequestMapping("/Board/Delete")
-		public String del(@RequestParam("idx")int idx) {
-			boardMapper.Bdelete(idx);
-			return "redirect:/Board/Blist";
+	
+		@RequestMapping("/Board/WriteForm")
+		public ModelAndView writeForm(MenuDTO menuDTO) {
+			//메뉴 목록을 조회
+			List<MenuDTO> menuList = menuMapper.getMenuList();
+			
+			menuDTO = menuMapper.getMenu(menuDTO);
+			
+			ModelAndView mv = new ModelAndView();
+			mv.addObject("menuList", menuList);
+			mv.addObject("menuDTO",menuDTO);
+			mv.setViewName("board/write");
+			return mv;
+		}
+		
+		@RequestMapping("/Board/Write")
+		public ModelAndView write(BoardDTO boardDTO) {
+			boardMapper.insertBoard(boardDTO);
+			String menu_id = boardDTO.getMenu_id();
+			ModelAndView mv = new ModelAndView();
+			mv.setViewName("redirect:/Board/Blist?menu_id=" + menu_id);
+			return mv;
+			
+			
+			
 		}
 	
 	
-	
-	//게시글 메뉴 선택
-	@RequestMapping("/Board/BwriteForm")
-	public String writeForm(Model model) {
-	    // menusMapper를 사용해 메뉴 목록을 DB에서 가져옴
-	    List<MenuDTO> menu = menuMapper.getMenuList(); 
-	    model.addAttribute("menu", menu);
-	    return "/board/bwrite";
-	}
 	
 	
 }

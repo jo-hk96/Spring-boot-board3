@@ -45,7 +45,7 @@
 		</tr>
 		<tr >
 			<td colspan = "7">
-				<a href = "/">home</a>
+				<a href = "/">메뉴로 돌아가기</a>
 			</td>	
 		</tr>
 		<c:forEach var = "tuser" items = "${tuserList}">
