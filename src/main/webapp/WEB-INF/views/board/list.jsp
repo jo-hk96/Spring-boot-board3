@@ -21,6 +21,8 @@
 			border-color:red;
 		}
 	}
+	
+	#menu a{color:white}
 /*	tr:first-child td{
 		border-color:white;
 	}
@@ -53,11 +55,11 @@
 					<a href = "/">메뉴로돌아가기</a>
 				</td>	
 			</tr>
-			<c:forEach var = "blist" items = "${boardlist}"> 
+			<c:forEach var = "blist" items = "${boardList}"> 
 				<tr>
 					<td>${blist.idx}</td>
 					<td>
-						<a href = "/Board/View?idx=${board.idx }">
+						<a href = "/Board/View?idx=${blist.idx }">
 							${blist.title}
 						</a>
 					</td>

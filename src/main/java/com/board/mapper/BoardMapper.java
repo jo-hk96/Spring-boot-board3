@@ -12,11 +12,9 @@ public interface BoardMapper {
 	List<BoardDTO> getBoardList(MenuDTO menuDTO);
 	
 	
-	void Bdelete (int idx);
 		
 	
 	void insertBoard(BoardDTO boardDTO);
-
 
 
 }

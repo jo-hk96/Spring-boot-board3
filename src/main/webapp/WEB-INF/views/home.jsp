@@ -40,8 +40,8 @@
    <a href ="/Tuser/Ulist">회원리스트</a><br>
    <a href ="/Tuser/NewTuser">회원가입</a><br>
    <hr>
-   <a href = "/Board/Blist?menu_id=">게시글 목록</a><br>
-   
+   <a href = "/Board/Blist?menu_id=MENU01">게시글 목록</a><br>
+   <a href = "/Board/WriteForm?menu_id=MENU01">새 게시글 추가</a>
 </main>   
 </body>
 </html>

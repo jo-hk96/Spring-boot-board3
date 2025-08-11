@@ -28,19 +28,20 @@ public class boardController {
 	@RequestMapping("Board/Blist")
 	public ModelAndView list(MenuDTO menuDTO){
 		//메뉴 리스트
-		List<MenuDTO> menulist = menuMapper.getMenuList();
+	List<MenuDTO>  menuList  =  menuMapper.getMenuList();
 		
+		// 게시물 목록처리
+		List<BoardDTO> boardList =  boardMapper.getBoardList( menuDTO ); 
+		// System.out.println( boardList );
+	
+		menuDTO  =  menuMapper.getMenu( menuDTO );
 		
-		//게시글 목록처리
-		List<BoardDTO> boardlist = boardMapper.getBoardList(menuDTO);
-		
-		menuDTO = menuMapper.getMenu(menuDTO);
-		
-		ModelAndView mv = new ModelAndView();
-		mv.addObject("menulist", menulist);
-		mv.addObject("menuDTO", menuDTO);
-		mv.addObject("boardlist", boardlist);
-		mv.setViewName("board/list");
+		ModelAndView  mv  = new ModelAndView();
+		mv.addObject("menuList",  menuList);		
+		//mv.addObject("menu_id",   menu_id );		
+		mv.addObject("menuDTO",   menuDTO );		
+		mv.addObject("boardList", boardList );
+		mv.setViewName( "board/list" );
 		return mv;
 		
 	}
@@ -64,11 +65,10 @@ public class boardController {
 		public ModelAndView write(BoardDTO boardDTO) {
 			boardMapper.insertBoard(boardDTO);
 			String menu_id = boardDTO.getMenu_id();
+			
 			ModelAndView mv = new ModelAndView();
 			mv.setViewName("redirect:/Board/Blist?menu_id=" + menu_id);
 			return mv;
-			
-			
 			
 		}
 	
