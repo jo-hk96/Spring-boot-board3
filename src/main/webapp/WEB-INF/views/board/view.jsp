@@ -38,6 +38,14 @@ td , textarea{
   } 
   td:nth-of-type(2) { width : 600px; }
   
+  
+  td:nth-of-type(3) {   text-align: center;  
+     width : 200px; 
+     background : #666;
+     color : white;
+     font-weight: bold;   
+     border : 1px solid white;   }
+  
   tr:last-child > td { 
       background: white; 
       border: 1px solid black
@@ -63,26 +71,36 @@ td , textarea{
 		<main>
 			<!-- 메뉴리스트 -->
 			<%@include file="/WEB-INF/include/menus.jsp" %>
-			<h2>${menuDTO.menu_name}게시글 작성하기</h2>
-			<form action ="/Board/Write" method="POST">
-				<input type ="hidden" name = "menu_id" value="${menuDTO.menu_id}"/>
+			<h2>${menuDTO.menu_name} 게시글</h2>
+			<form action ="/Board/Blist" method="POST">
 				<table id = "table">
 					<tr>
+						<td>글번호:</td>
+						<td>${boardview.idx}</td>
 						<td>제목:</td>
-						<td><input type = "text" name ="title" id = "title"/></td>
+						<td>${boardview.title}</td>
 					</tr>
 					<tr>
 						<td>작성자 이름:</td>
-						<td><input type = "text" name ="writer" id = "writer"/></td>
+						<td>${boardview.writer}</td>
+						<td>작성일:</td>
+						<td>${boardview.regdate}</td>
+					</tr>
+					<tr>
+						<td>조회수:</td>
+						<td colspan = "3">${boardview.hit}</td>
 					</tr>
 					<tr>
 						<td>내용:</td>
-						<td><textarea name = "content" id = "content"></textarea></td>
+						<td colspan = "3"><div id = "content" style = "height:250px ">${boardview.content}</div></td>
 					</tr>
 					<tr>
-						<td colspan = "2">
-							<input type = "submit" value = "게시글 등록 하기"/>
-							<input type = "button" value = "목록으로 돌아가기" id = "goList" />
+						<td colspan = "4">
+							<a href = "/Board/WriteForm?menu_id=${menuDTO.menu_id}">새글쓰기</a>
+							<a href = "/Board/UpdateForm?idx=${boardview.idx}&menu_id=${menuDTO.menu_id}">수정</a>
+							<a href = "/Board/delete?idx=${boardview.idx}&menu_id=${menuDTO.menu_id}">삭제</a>
+							<a href = "/Board/Blist?menu_id=${menuDTO.menu_id}">목록</a>
+							<a href = "/">HOME</a>
 						</td>
 					</tr>
 				</table>
@@ -94,28 +112,6 @@ td , textarea{
 			goListEl.onclick = function(){
 				location.href = '/Board/Blist?menu_id=${menuDTO.menu_id}'
 			}
-			//유효성검사
-			const formEl = document.querySelectorAll("form")[0];
-			const titleEl = document.querySelector('[name="title"]') //'[name = "title"]' id :("#title")
-			const writerEl = document.querySelector('[name="writer"]')
-			const contentEl = document.querySelector('#content')
-			formEl.addEventListener('submit',function(e){
-				if(titleEl.value == ''){
-					alert('제목을 입력되지 않았습니다.')
-					e.preventDefault();//폼제출막기
-					titleEl.focus();//제목입력칸으로 이동
-				}
-				if(writerEl.value == ''){
-					alert('작성자가 입력되지 않았습니다')
-					e.preventDefault();
-					writerEl.focus();
-				}
-				if(contentEl.value == ''){
-					alert('내용을 입력해주세요')
-					e.preventDefault();
-					contentEl.focus();
-				}
-			})
 		</script>
 	</body>
 </html>

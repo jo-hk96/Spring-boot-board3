@@ -41,7 +41,7 @@
 			<tr>
 				<td colspan = "5">
 					<a href ="/Menus/WriteForm">새 메뉴 추가</a><Br>
-					<a href = "/">home</a>
+					<a href = "/">메인화면</a>
 				</td>	
 			</tr>
 			<c:forEach var = "menu" items = "${menuList}">

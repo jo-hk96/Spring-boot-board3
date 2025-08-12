@@ -27,7 +27,7 @@
 	<body>
 		<main>
 			<h2>회원가입</h2>
-			<a href ="/">home</a>
+			<a href ="/">메인화면</a>
 			<form action ="/Tuser/TuserWrite" method="POST">
 				<table>
 					<tr>
@@ -79,7 +79,7 @@
 							inputEl2.focus();
 							return false;
 						}else if(!regex.test(inputEl2.value.trim())){
-							alert('1개이상의 영대소문 8~20자,특수문자를 포함하여 입력해주세요.')
+							alert('비밀번호는 1개이상의 영대소문 8~20자,특수문자를 포함하여 입력해주세요.')
 							e.stopPropagation();
 							e.preventDefault();
 							inputEl2.focus();

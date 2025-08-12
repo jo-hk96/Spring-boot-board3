@@ -14,9 +14,31 @@
 	(select nvl(max(idx),0)+1 from board),
 	
 	#{menu_id},#{title},#{content},#{writer},sysdate,0
-	
 	)
 </insert>
+
+<update id= "incHit">
+	update board
+	set hit = hit + 1
+	where idx = #{idx}
+</update>
+
+<select id ="getBoard" resultType ="com.board.domain.BoardDTO">
+	select idx ,menu_id,title,writer,TO_CHAR(regdate ,'YYYY-MM-DD HH24:MI:SS DAY')regdate , hit ,content
+	from board
+	where idx =#{idx}
+</select>
+
+<delete id = "delete">
+	delete from board
+	where idx = #{idx}
+</delete>
+
+<update id = "boardUpdate">
+	update board
+	set title = #{title}, content = #{content}
+	where idx = #{idx}
+</update>
 
 
 
