@@ -73,7 +73,7 @@ td , textarea{
 					</tr>
 					<tr>
 						<td>작성자 이름:</td>
-						<td><input type = "text" name ="writer" id = "writer"/></td>
+						<td><input type = "text" name ="writer" id = "writer" value ="${login_id}" readonly/></td>
 					</tr>
 					<tr>
 						<td>내용:</td>

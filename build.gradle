@@ -25,7 +25,8 @@ repositories {
 }
 
 dependencies {
-	implementation 'javax.servlet:jstl'
+	implementation 'jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:3.0.0'
+	implementation 'org.glassfish.web:jakarta.servlet.jsp.jstl:3.0.1'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.5'
 	compileOnly 'org.projectlombok:lombok'
@@ -36,7 +37,6 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:3.0.5'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-	
 	 // JSP  JSTL 설정  (Spring Boot 3.x, JDK 17이상)
     implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
     implementation 'jakarta.servlet:jakarta.servlet-api'
@@ -53,13 +53,13 @@ compileJava {
 }
 
 
-/*
+
 eclipse {
     wtp {
         component {
             contextPath = '/'
-            version = 6.0
+            version = '6.0'
         }
     }
 }
-*/
+

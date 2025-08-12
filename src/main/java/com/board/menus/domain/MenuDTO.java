@@ -35,7 +35,6 @@ public class MenuDTO {
 	}
 	
 	public MenuDTO(String menu_id, String menu_name, int menu_seq) {
-		super();
 		this.menu_id = menu_id;
 		this.menu_name = menu_name;
 		this.menu_seq = menu_seq;

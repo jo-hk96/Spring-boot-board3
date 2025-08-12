@@ -14,6 +14,8 @@ import com.board.mapper.BoardMapper;
 import com.board.menus.domain.MenuDTO;
 import com.board.menus.mapper.MenuMapper;
 
+import jakarta.servlet.http.HttpSession;
+
 
 @Controller
 public class boardController {
@@ -27,13 +29,13 @@ public class boardController {
 	//게시판 메뉴 목록
 	@RequestMapping("Board/Blist")
 	public ModelAndView list(MenuDTO menuDTO){
+		ModelAndView  mv  = new ModelAndView();
 		//메뉴 리스트
 		List<MenuDTO>  menuList  =  menuMapper.getMenuList();
 		// 게시물 목록처리
 		List<BoardDTO> boardList =  boardMapper.getBoardList( menuDTO ); 
 		// System.out.println( boardList );
 		menuDTO  =  menuMapper.getMenu( menuDTO );
-		ModelAndView  mv  = new ModelAndView();
 		mv.addObject("menuList",  menuList);		
 		//mv.addObject("menu_id",   menu_id );		
 		mv.addObject("menuDTO",   menuDTO );		
@@ -45,14 +47,23 @@ public class boardController {
 	
 	
 		@RequestMapping("/Board/WriteForm")
-		public ModelAndView writeForm(MenuDTO menuDTO) {
+		public ModelAndView writeForm(MenuDTO menuDTO , HttpSession session) {
+			ModelAndView mv = new ModelAndView();
+			String login_id = (String) session.getAttribute("login_id");
+			
+			
+			
 			//메뉴 목록을 조회
+			
+			if(login_id != null) { //로그인했을경우 정보 담기
+			mv.addObject("login_id",login_id);
 			List<MenuDTO> menuList = menuMapper.getMenuList();
 			menuDTO = menuMapper.getMenu(menuDTO);
-			ModelAndView mv = new ModelAndView();
 			mv.addObject("menuList", menuList);
-			mv.addObject("menuDTO",menuDTO);
+			mv.addObject("menuDTO",menuDTO);			
+			}
 			mv.setViewName("board/write");
+			
 			return mv;
 		}
 		
@@ -60,11 +71,22 @@ public class boardController {
 		
 		//게시글 쓰기
 		@RequestMapping("/Board/Write")
-		public ModelAndView write(BoardDTO boardDTO) {
+		public ModelAndView write(BoardDTO boardDTO , HttpSession session) {
+			String login_id = (String) session.getAttribute("login_id");
+			
+			ModelAndView mv = new ModelAndView();	
+			
+			
+			if(login_id != null) {
+			
+			boardDTO.setWriter(login_id);
 			boardMapper.insertBoard(boardDTO);
 			String menu_id = boardDTO.getMenu_id();
-			ModelAndView mv = new ModelAndView();
-			mv.setViewName("redirect:/Board/Blist?menu_id=" + menu_id);
+			mv.addObject("login_id" ,login_id);
+			mv.setViewName("redirect:/Board/Blist?menu_id=" + menu_id + "&login_id=" + login_id);
+			}else {
+				mv.setViewName("redirect:/");
+			}	
 			return mv;
 			
 		}

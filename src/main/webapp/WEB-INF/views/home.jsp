@@ -32,16 +32,37 @@
 	   		<a href = "/user/logout">로그아웃</a>
 	   </c:if>
    </div>
-   <hr>	
+   <hr>
+   <c:if test = "${login_id == null || login_id != 'sky'}">
+	<span>관리자 메뉴입니다.관리자로 로그인해주세요</span>
+   </c:if>
+   
+   
+   <c:if test = "${login_id == 'sky' }">
    <a href ="/Menus/List">메뉴 목록</a><br>
    <a href ="/Menus/WriteForm">새 메뉴 추가</a><br>
-   <a href ="/Menus/WriteForm2">메뉴이름으로 메뉴추가</a>
+   <a href ="/Menus/WriteForm2">메뉴이름으로 메뉴추가</a><br>
+   <a href ="/Tuser/Ulist">회원리스트</a>
+   </c:if>
    <hr>
-   <a href ="/Tuser/Ulist">회원리스트</a><br>
    <a href ="/Tuser/NewTuser">회원가입</a><br>
    <hr>
+   <c:if test = "${login_id == null }">
+   <a href = "#" onclick = "alertlist()" > 게시글 목록 </a><br>
+   <a href = "#" onclick = "alertlist()" > 새 게시글 추가 </a>
+   </c:if> 
+   
+   <c:if test = "${login_id != null }">
    <a href = "/Board/Blist?menu_id=MENU01">게시글 목록</a><br>
    <a href = "/Board/WriteForm?menu_id=MENU01">새 게시글 추가</a>
+	</c:if>
+	<script>
+		function alertlist(){
+			alert('로그인 후 이용이 가능합니다')
+			
+		}
+	</script>
+	
 </main>   
 </body>
 </html>

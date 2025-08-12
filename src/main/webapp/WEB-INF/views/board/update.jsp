@@ -136,13 +136,13 @@ td , textarea{
 				<table id = "table">
 					<tr>
 						<td>작성자 이름:</td>
-						<td><input type = "text" id ="writer" value="${board.writer}"></td>
+						<td><input type = "text" id ="writer" name = "writer" value="${board.writer}"></td>
 						<td>제목:</td>
-						<td><input type = "text" id = "title" value ="${board.title}"></td>
+						<td><input type = "text" id = "title" name = "title" value ="${board.title}"></td>
 					</tr>
 					<tr>
 						<td>내용:</td>
-						<td colspan = "3"><textarea id = "content">${board.content}</textarea></div></td>
+						<td colspan = "3"><textarea id = "content" name = "content">${board.content}</textarea></td>
 					</tr>
 					<tr>
 						<td colspan = "4">
