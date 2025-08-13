@@ -39,7 +39,4 @@
 	set title = #{title}, content = #{content}
 	where idx = #{idx}
 </update>
-
-
-
 </mapper>

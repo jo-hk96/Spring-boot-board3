@@ -24,8 +24,6 @@ public class boardController {
 	private BoardMapper boardMapper;
 	@Autowired
 	private MenuMapper menuMapper;
-	
-	
 	//게시판 메뉴 목록
 	@RequestMapping("Board/Blist")
 	public ModelAndView list(MenuDTO menuDTO){

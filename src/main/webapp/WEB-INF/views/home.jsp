@@ -19,7 +19,8 @@
 	   	<form action = "/user/login" method = "post">
 		   	아이디 : <input type = "text" name ="userid" id = "userid" placeholder = "아이디를 입력해주세요">
 		   	비밀번호 : <input type = "password" name ="passwd" id = "passwd" placeholder = "비밀번호를 입력해주세요">
-		   	<input type = "submit" name = "login" value = "확인">
+		   	<input type = "submit" name = "login" value = "로그인">
+		   <a href ="/Tuser/NewTuser">회원가입</a>
 	   </form>
 	   </c:if>
 	   <c:if test = "${not empty error}">
@@ -45,8 +46,6 @@
    <a href ="/Tuser/Ulist">회원리스트</a>
    </c:if>
    <hr>
-   <a href ="/Tuser/NewTuser">회원가입</a><br>
-   <hr>
    <c:if test = "${login_id == null }">
    <a href = "#" onclick = "alertlist()" > 게시글 목록 </a><br>
    <a href = "#" onclick = "alertlist()" > 새 게시글 추가 </a>
@@ -62,6 +61,10 @@
 			
 		}
 	</script>
+	
+	<hr>
+	<a href = "/BoardPaging/Blist?nowpage=1&menu_id=MENU01">게시글 목록(페이징)</a><br>
+  	<a href = "/BoardPaging/WriteForm?nowpage=1&menu_id=MENU01">새 게시글 추가(페이징)</a>
 	
 </main>   
 </body>
