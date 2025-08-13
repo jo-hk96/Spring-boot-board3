@@ -4,4 +4,4 @@ pluginManagement {
 		gradlePluginPortal()
 	}
 }
-rootProject.name = 'Board3'
+rootProject.name = 'Spring-boot-board3'
