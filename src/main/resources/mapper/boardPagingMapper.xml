@@ -14,6 +14,18 @@
   order by idx desc
   OFFSET  #{offset} ROWS FETCH NEXT #{recordSize} ROWS ONLY
 </select>
+<select id = "insertBoard">
+	insert into board(idx,menu_id,title,content,writer,regdate,hit)
+	values(
+	
+	(select nvl(max(idx),0)+1 from board),
+	
+	#{menu_id},#{title},#{content},#{writer},sysdate,0
+	)
+
+
+</select>
+
 
 
 </mapper>

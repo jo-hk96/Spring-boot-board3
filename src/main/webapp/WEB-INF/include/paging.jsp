@@ -20,8 +20,10 @@
 					<td><a href = "/BoardPaging/Blist?nowpage=${pagenum}&menu_id=${menuDTO.menu_id}">${pagenum}</a></td>		
 				</c:forEach>
 			<!-- 다음 마지막 -->
-			<td><a href = "">⏩</a></td>		
-			<td><a href = "">⏭</a></td>		
+			<c:if test = "endnum lt totalpagecount">
+				<td><a href = "/BoardPaging/Blist?nowpage${endnum + 1}$menu_id=M${menu_id}">⏩</a></td>		
+				<td><a href = "/BoardPaging/Blist?nowpage${total}$menu_id=M${menu_id}">⏭</a></td>		
+			</c:if>	
 		</tr>
 	</table>
 </div>

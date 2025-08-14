@@ -35,6 +35,11 @@
 	Where MENU_ID = #{menu_id} 
 </select>
 
+<select id = "getMenuByName">
+	select menu_id ,menu_name , menu_seq
+	from menus
+	where menu_id = ${menu_id}
+</select>
 
 <!--메뉴수정  -->
 <update id = "updateMenu">

@@ -40,12 +40,10 @@ public class boardController {
 		
 	}
 	
-	
 		@RequestMapping("/Board/WriteForm")
 		public ModelAndView writeForm(MenuDTO menuDTO , HttpSession session) {
 			ModelAndView mv = new ModelAndView();
 			String login_id = (String) session.getAttribute("login_id");
-			
 			
 			
 			//메뉴 목록을 조회

@@ -66,6 +66,7 @@ td , textarea{
 			<h2>${menuDTO.menu_name}게시글 작성하기</h2>
 			<form action ="/Board/Write" method="POST">
 				<input type ="hidden" name = "menu_id" value="${menuDTO.menu_id}"/>
+				<input type ="hidden" name = "nowpage" value="${nowpage}"/>
 				<table id = "table">
 					<tr>
 						<td>제목:</td>

@@ -40,7 +40,7 @@
 <body>
 	<main>
 	<!-- 메뉴목록 -->
-	<%@include file = "/WEB-INF/include/menus.jsp" %>
+	<%@include file = "/WEB-INF/include/menuspaging.jsp" %>
 		<h2>${menuDTO.menu_name} 게시글 목록</h2>
 		<table id="table">
 			<tr>
@@ -57,14 +57,14 @@
 			</tr>
 			<tr>
 			    <td colspan="5">
-			      <a href="/Board/WriteForm?menu_id=${menuDTO.menu_id}">${menuDTO.menu_name} 게시글 쓰기</a>	 
+			      <a href="/BoardPaging/WriteForm?nowpage=${nowpage}&menu_id=$">${menuDTO.menu_name} 게시글 쓰기</a>	 
 			    </td>
 		   </tr>
-			<c:forEach var = "blist" items = "${boardList}"> 
+			<c:forEach var = "blist" items = "${response.list}"> 
 				<tr>
 					<td>${blist.idx}</td>
 					<td>
-						<a href = "/Board/View?idx=${blist.idx }&menu_id=${menuDTO.menu_id}">
+						<a href = "/BoardPaging/View?idx=${blist.idx}&nowpage=${nowpage}&menu_id=${menu_id}">
 							${blist.title}
 						</a>
 					</td>

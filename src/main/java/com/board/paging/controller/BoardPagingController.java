@@ -26,9 +26,6 @@ public class BoardPagingController {
 	@Autowired
 	private BoardMapper boardMapper;
 	
-	
-	
-	
 	//게시글 목록의 페이징
 	@RequestMapping("/BoardPaging/Blist")
 	public ModelAndView  list(int nowpage, MenuDTO menuDTO) {
@@ -36,7 +33,6 @@ public class BoardPagingController {
 		//메뉴목록조회
 		List<MenuDTO> menuList = menuMapper.getMenuList();
 		
-		List<BoardDTO> boardList =  boardMapper.getBoardList( menuDTO );
 		
 		//게시글 목록조회
 		//menu_id = MENU01
@@ -89,17 +85,39 @@ public class BoardPagingController {
 		mv.addObject("menuDTO",menuDTO);
 		mv.addObject("menu_id",menu_id);
 		mv.addObject("searchDTO",searchDTO);
-		mv.addObject("boardList" , boardList);
+		mv.addObject("nowpage",nowpage);
 		mv.setViewName("boardPaging/list");
 		return mv;
 		
 	}
 	@RequestMapping("/BoardPaging/WriteForm")
-	public ModelAndView writeForm() {
+	public ModelAndView writeForm(int nowpage ,String menu_id) {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("board/write");
+		List<MenuDTO> menuList = menuMapper.getMenuList();
+		MenuDTO menuDTO = menuMapper.getMenuByName(menu_id);
+		mv.setViewName("boardPaging/write");
+		
+		
+		
 		return mv;
+
 	}
+	
+	@RequestMapping("/BoardPaging/Write")
+	public ModelAndView write(int nowpage , BoardDTO boardDTO) {
+		
+		//넘어온 글 저장
+		
+		boardPagingMapper.insertBoard(boardDTO);
+		
+		ModelAndView mv = new ModelAndView();
+		String fmt = "redirect:/boardPaging/list?menu_id=%s&nowpage=%d";
+		String loc		= String.format(fmt, boardDTO.getMenu_id() ,nowpage );
+		mv.setViewName(loc);
+		return mv;
+		
+	}
+
 	
 	
 	
