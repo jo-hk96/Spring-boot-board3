@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.board.domain.BoardDTO;
+import com.board.mapper.BoardMapper;
 import com.board.menus.domain.MenuDTO;
 import com.board.menus.mapper.MenuMapper;
 import com.board.paging.domain.PageResponse;
@@ -22,7 +23,8 @@ public class BoardPagingController {
 	@Autowired
 	private BoardPagingMapper boardPagingMapper;
 	
-	
+	@Autowired
+	private BoardMapper boardMapper;
 	
 	
 	
@@ -33,6 +35,8 @@ public class BoardPagingController {
 		
 		//메뉴목록조회
 		List<MenuDTO> menuList = menuMapper.getMenuList();
+		
+		List<BoardDTO> boardList =  boardMapper.getBoardList( menuDTO );
 		
 		//게시글 목록조회
 		//menu_id = MENU01
@@ -55,9 +59,8 @@ public class BoardPagingController {
 		//페이징을 위한 초기설정
 		SearchDTO searchDTO = new SearchDTO();
 		searchDTO.setPage(nowpage);
-		searchDTO.setRecordSize(10); // 페이지당 10줄의 데이터
+		searchDTO.setRecordSize(2); // 페이지당 10줄의 데이터
 		searchDTO.setPageSize(10); // paging.jsp 출력할 페이지
-		
 		
 		
 		
@@ -68,23 +71,29 @@ public class BoardPagingController {
 		//-------------------------------------------------
 		
 		int offset     = searchDTO.getOffset(); 
-		int recordSize = searchDTO.getRecordSize(); //10;
+		int recordSize = searchDTO.getRecordSize(); 
+		String menu_id = menuDTO.getMenu_id();
 		
-		List<BoardDTO> list = boardPagingMapper.getBoardPaginList(
-				offset, recordSize
+		List<BoardDTO> list = boardPagingMapper.getBoardPagingList(
+				menu_id ,offset, recordSize
 				);
+			System.out.println("0:" + list);
 		response = new PageResponse<>(list, pagination);
 		
+		menuDTO = menuMapper.getMenu(menuDTO);		
+		System.out.println(menuDTO);
 		
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("menuList", menuList);
 		mv.addObject("response" , response);
+		mv.addObject("menuList", menuList);
+		mv.addObject("menuDTO",menuDTO);
+		mv.addObject("menu_id",menu_id);
+		mv.addObject("searchDTO",searchDTO);
+		mv.addObject("boardList" , boardList);
 		mv.setViewName("boardPaging/list");
 		return mv;
 		
 	}
-	
-	
 	@RequestMapping("/BoardPaging/WriteForm")
 	public ModelAndView writeForm() {
 		ModelAndView mv = new ModelAndView();

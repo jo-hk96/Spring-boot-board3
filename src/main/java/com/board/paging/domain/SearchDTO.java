@@ -18,10 +18,12 @@ public class SearchDTO {
 	    private String searchType;    // 검색 유형    : title, content, writer
 	    private Pagination pagination;  // 페이지네이션 정보 ((paging.jsp  에서 사용할 변수 모음)
 
+	    
+	    
 	    // 생성자 : 초기값 설정  SearchVo  searchVo = new SearchVo()
 	    public SearchDTO() {
 	        this.page = 1;
-	        this.recordSize = 10;
+	        this.recordSize = 2;
 	        this.pageSize   = 10;
 	    }
 

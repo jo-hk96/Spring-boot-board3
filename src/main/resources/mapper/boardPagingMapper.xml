@@ -7,8 +7,13 @@
 	from board
 	where menu_id =#{menu_id}
 </select>
-
-
+<select id = "getBoardPagingList">
+  select idx ,menu_id , title, writer , to_char(regdate,'YYYY-MM-DD') , hit
+  from board
+  where menu_id = #{menu_id}
+  order by idx desc
+  OFFSET  #{offset} ROWS FETCH NEXT #{recordSize} ROWS ONLY
+</select>
 
 
 </mapper>

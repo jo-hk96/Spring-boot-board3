@@ -90,6 +90,8 @@ SELECT  *
  
  SET TIMIMG ON    
  ORACLE
+ 
+ ========================================================================
   SELECT    ZIPCODE, SIDO, GUGUN, DONG, BUNJI, SEQ FROM POST
     WHERE   DONG LIKE '%중앙%' 
     OFFSET  30 ROWS FETCH NEXT 10 ROWS ONLY;  -- 경과 시간: 00:00:00.359

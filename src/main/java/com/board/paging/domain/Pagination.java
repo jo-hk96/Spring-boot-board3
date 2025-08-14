@@ -1,6 +1,8 @@
 package com.board.paging.domain;
 
+import lombok.Data;
 import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
 
 // OFFSET  30            ROWS FETCH NEXT 10 ROWS ONLY   ; 문법
@@ -10,15 +12,15 @@ import lombok.ToString;
 //                 startPage               endPage
 //                 startnum                endnum   
 
-@Getter
-@ToString
+@Data
 public class Pagination {
 
     private int      totalRecordCount;     // 검색된 전체 데이터 수
                                            // menu_id 에 해당하는  검색된
-    private int      totalPageCount;       // 전체 페이지 수
-    private int      startPage;            // 첫 페이지 번호
-    private int      endPage;              // 끝 페이지 번호
+    										//
+    private int      totalPageCount;       // 전체 페이지 수 -> totalpagecount
+    private int      startPage;            // 첫 페이지 번호 -> startnum
+    private int      endPage;              // 끝 페이지 번호 ->endnum
     private int      limitStart;           // LIMIT 시작 위치
     private boolean  existPrevPage;        // 이전 페이지 존재 여부
     private boolean  existNextPage;        // 다음 페이지 존재 여부
@@ -40,7 +42,6 @@ public class Pagination {
         if (params.getPage() > totalPageCount) {
             params.setPage(totalPageCount);
         }
-
         // 첫 페이지 번호 계산
         startPage = ((params.getPage() - 1) / params.getPageSize()) * params.getPageSize() + 1;
 

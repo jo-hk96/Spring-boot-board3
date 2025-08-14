@@ -27,10 +27,6 @@ public class MenuDTO {
 		this.menu_seq = menu_seq;
 	}
 	
-	
-	
-	
-	
 	public MenuDTO() {
 	}
 	
