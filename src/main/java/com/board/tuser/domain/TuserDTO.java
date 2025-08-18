@@ -6,6 +6,7 @@ public class TuserDTO {
 	private String username;
 	private String email;
 	private int upoint;
+	private String memlevel;
 	private String indate;
 	
 	
@@ -45,6 +46,12 @@ public class TuserDTO {
 	public void setIndate(String indate) {
 		this.indate = indate;
 	}
+	public String getMemlevel() {
+		return memlevel;
+	}
+	public void setMemlevel(String memlevel) {
+		this.memlevel = memlevel;
+	}
 	
 	
 	
@@ -56,19 +63,20 @@ public class TuserDTO {
 	
 	
 	
-	public TuserDTO(String userid, String passwd, String username, String email, int upoint, String indate) {
+	public TuserDTO(String userid, String passwd, String username, String email, int upoint, String indate , String memlevel) {
 		this.userid = userid;
 		this.passwd = passwd;
 		this.username = username;
 		this.email = email;
 		this.upoint = upoint;
+		this.memlevel = memlevel;
 		this.indate = indate;
 	}
 	
 	@Override
 	public String toString() {
 		return "tuserDTO [userid=" + userid + ", passwd=" + passwd + ", username=" + username + ", email=" + email
-				+ ", upoint=" + upoint + ", date=" + indate + "]";
+				+ ", upoint=" + upoint + ", memlevel=" + memlevel +", date=" + indate + "]";
 	}
 	
 

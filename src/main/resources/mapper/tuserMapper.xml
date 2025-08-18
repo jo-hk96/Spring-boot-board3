@@ -2,9 +2,21 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.board.tuser.mapper.TuserMapper">
  <select id = "getTuserList" resultType="com.board.tuser.domain.TuserDTO">
- 	SELECT userid ,passwd , username, email , upoint , to_char(indate,'YYYY-MM-DD DY') as indate
- 	FROM  tuser
- 	order by userid asc
+ 	
+     SELECT      USERID,  
+                 PASSWD,  
+                 USERNAME,
+                 EMAIL,
+                 UPOINT,
+                 CASE  
+                   WHEN  UPOINT BETWEEN 0      AND      50000  THEN  '새싹회원'
+                   WHEN  UPOINT BETWEEN 50001  AND     100000  THEN  '나무회원'
+                   WHEN  UPOINT BETWEEN 100001 AND 9999999999  THEN  '숲회원'                 
+                 END AS MEMLEVEL,
+                 TO_CHAR(INDATE, 'YYYY-MM-DD DY') INDATE
+      FROM       TUSER 
+      ORDER  BY  INDATE ASC
+  
  </select>
 <insert id ="insertUser"> 
 	insert into tuser

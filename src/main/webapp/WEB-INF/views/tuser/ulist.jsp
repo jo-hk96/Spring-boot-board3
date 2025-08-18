@@ -39,6 +39,7 @@
 			<td>이름</td>
 			<td>이메일</td>
 			<td>유저포인트</td>
+			<td>등급</td>
 			<td>가입날짜</td>
 			<td>삭제</td>
 			<td>수정</td>
@@ -54,6 +55,7 @@
 				<td>${tuser.username}</td>
 				<td>${tuser.email}</td>
 				<td>${tuser.upoint}</td>
+				<td>${tuser.memlevel}</td>
 				<td>${tuser.indate}</td>
 				<td><a href ="/Tuser/userDelete?userid=${tuser.userid}" onclick = "return confirm('삭제하시겠습니까?')">❌</a></td>
 				<td><a href ="/Tuser/TuserUpdate?userid=${tuser.userid}">회원수정</a></td>
