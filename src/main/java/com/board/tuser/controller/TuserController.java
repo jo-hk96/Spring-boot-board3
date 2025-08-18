@@ -32,19 +32,16 @@ public class TuserController {
 	public String login(@RequestParam("userid") String userid ,@RequestParam("passwd") String passwd , HttpSession session, Model model) {
 		//DTO 형식으로 하나의 유저정보를 가져옴
 		TuserDTO user = tuserMapper.getUser2(userid);
-		
 		//db에 해당하는 id가 없으면 null 반환
 		if(user != null && user.getPasswd().equals(passwd)) {
 			session.setAttribute("login_id", user.getUserid());
 			return "redirect:/";
 		}else{
-			
 		model.addAttribute("error","아이디 또는 패스워드가 틀립니다.");	
 		return "home"; // home.jsp 로 포워딩
 		}
 	}
 	*/
-	
 	/*
 	//로그아웃
 	@RequestMapping("/user/logout")
@@ -53,10 +50,17 @@ public class TuserController {
 		//세션 해제
 		session.invalidate();
 		return "redirect:/";
-		
 	}
-	
 	*/
+	
+	
+	
+	//로그인
+	
+	
+	
+	//로그아웃
+	
 	
 	
 	//유저리스트
