@@ -26,7 +26,7 @@ public class TuserController {
 	
 	
 	
-	
+	/*
 	//로그인
 	@RequestMapping("/user/login")
 	public String login(@RequestParam("userid") String userid ,@RequestParam("passwd") String passwd , HttpSession session, Model model) {
@@ -43,7 +43,9 @@ public class TuserController {
 		return "home"; // home.jsp 로 포워딩
 		}
 	}
+	*/
 	
+	/*
 	//로그아웃
 	@RequestMapping("/user/logout")
 	public String logout(HttpSession session) {
@@ -54,7 +56,7 @@ public class TuserController {
 		
 	}
 	
-	
+	*/
 	
 	
 	//유저리스트
