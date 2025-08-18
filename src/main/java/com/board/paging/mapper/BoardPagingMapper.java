@@ -9,7 +9,7 @@ import com.board.menus.domain.MenuDTO;
 
 @Mapper
 public interface BoardPagingMapper {
-
+	
 	int count(MenuDTO menuDTO);
 
 	List<BoardDTO> getBoardPagingList(String menu_id, int offset, int recordSize);
@@ -17,5 +17,10 @@ public interface BoardPagingMapper {
 	List<BoardDTO> getBoardList(MenuDTO menuDTO);
 	
 	void insertBoard(BoardDTO boardDTO);
+
+	BoardDTO getBoardById(int idx);
 	
+	void delete(int idx);
+	
+	void update(BoardDTO boardDTO);
 }

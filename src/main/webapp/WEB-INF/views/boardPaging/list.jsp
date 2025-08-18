@@ -57,7 +57,7 @@
 			</tr>
 			<tr>
 			    <td colspan="5">
-			      <a href="/BoardPaging/WriteForm?nowpage=${nowpage}&menu_id=$">${menuDTO.menu_name} 게시글 쓰기</a>	 
+			      <a href="/BoardPaging/WriteForm?nowpage=${nowpage}&menu_id=${menu_id}">${menuDTO.menu_name} 게시글 쓰기</a>	 
 			    </td>
 		   </tr>
 			<c:forEach var = "blist" items = "${response.list}"> 

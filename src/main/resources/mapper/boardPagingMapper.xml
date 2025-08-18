@@ -22,9 +22,26 @@
 	
 	#{menu_id},#{title},#{content},#{writer},sysdate,0
 	)
-
-
 </select>
+
+<select id ="getBoardById">
+	select * from board
+	where idx = #{idx}
+</select>
+
+<delete id = "delete">
+	delete from board
+	where idx = #{idx}
+</delete>
+
+<update id = "update">
+	update board
+	set title = #{title}, content = #{content}
+	where idx = #{idx}
+
+</update>
+
+
 
 
 

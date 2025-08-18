@@ -145,7 +145,6 @@ public class boardController {
 			mv.addObject("menuDTO",menuDTO);
 			mv.addObject("board",board);
 			mv.setViewName("/board/update");
-			
 			return mv;
 		}
 		

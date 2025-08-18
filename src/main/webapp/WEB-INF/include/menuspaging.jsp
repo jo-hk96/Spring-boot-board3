@@ -7,7 +7,7 @@
 
 	<table  id="menu">
 	  <tr>
-	    <c:forEach  var="menu"  items="${ menuList }">
+	    <c:forEach  var="menu"  items="${menuList}">
 	      <td>
 	         <a href="/BoardPaging/Blist?nowpage=${nowpage}&menu_id=${menuDTO.menu_id}">
 	           ${ menu.menu_name }
